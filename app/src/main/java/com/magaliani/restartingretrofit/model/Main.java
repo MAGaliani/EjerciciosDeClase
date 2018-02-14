@@ -1,11 +1,8 @@
 
-package com.example;
+package com.magaliani.restartingretrofit.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Main {
 
@@ -24,6 +21,14 @@ public class Main {
     @SerializedName("temp_max")
     @Expose
     private Double tempMax;
+
+    public Main(Double temp, Long pressure, Long humidity, Double tempMin, Double tempMax) {
+        this.temp = temp;
+        this.pressure = pressure;
+        this.humidity = humidity;
+        this.tempMin = tempMin;
+        this.tempMax = tempMax;
+    }
 
     public Double getTemp() {
         return temp;
@@ -66,25 +71,39 @@ public class Main {
     }
 
     @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("temp", temp).append("pressure", pressure).append("humidity", humidity).append("tempMin", tempMin).append("tempMax", tempMax).toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Main main = (Main) o;
+
+        if (temp != null ? !temp.equals(main.temp) : main.temp != null) return false;
+        if (pressure != null ? !pressure.equals(main.pressure) : main.pressure != null)
+            return false;
+        if (humidity != null ? !humidity.equals(main.humidity) : main.humidity != null)
+            return false;
+        if (tempMin != null ? !tempMin.equals(main.tempMin) : main.tempMin != null) return false;
+        return tempMax != null ? tempMax.equals(main.tempMax) : main.tempMax == null;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(humidity).append(pressure).append(tempMax).append(temp).append(tempMin).toHashCode();
+        int result = temp != null ? temp.hashCode() : 0;
+        result = 31 * result + (pressure != null ? pressure.hashCode() : 0);
+        result = 31 * result + (humidity != null ? humidity.hashCode() : 0);
+        result = 31 * result + (tempMin != null ? tempMin.hashCode() : 0);
+        result = 31 * result + (tempMax != null ? tempMax.hashCode() : 0);
+        return result;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Main) == false) {
-            return false;
-        }
-        Main rhs = ((Main) other);
-        return new EqualsBuilder().append(humidity, rhs.humidity).append(pressure, rhs.pressure).append(tempMax, rhs.tempMax).append(temp, rhs.temp).append(tempMin, rhs.tempMin).isEquals();
+    public String toString() {
+        return "Main{" +
+                "temp=" + temp +
+                ", pressure=" + pressure +
+                ", humidity=" + humidity +
+                ", tempMin=" + tempMin +
+                ", tempMax=" + tempMax +
+                '}';
     }
-
 }

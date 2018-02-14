@@ -1,11 +1,8 @@
 
-package com.example;
+package com.magaliani.restartingretrofit.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Sys {
 
@@ -27,6 +24,15 @@ public class Sys {
     @SerializedName("sunset")
     @Expose
     private Long sunset;
+
+    public Sys(Long type, Long id, Double message, String country, Long sunrise, Long sunset) {
+        this.type = type;
+        this.id = id;
+        this.message = message;
+        this.country = country;
+        this.sunrise = sunrise;
+        this.sunset = sunset;
+    }
 
     public Long getType() {
         return type;
@@ -77,25 +83,40 @@ public class Sys {
     }
 
     @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("type", type).append("id", id).append("message", message).append("country", country).append("sunrise", sunrise).append("sunset", sunset).toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Sys sys = (Sys) o;
+
+        if (type != null ? !type.equals(sys.type) : sys.type != null) return false;
+        if (id != null ? !id.equals(sys.id) : sys.id != null) return false;
+        if (message != null ? !message.equals(sys.message) : sys.message != null) return false;
+        if (country != null ? !country.equals(sys.country) : sys.country != null) return false;
+        if (sunrise != null ? !sunrise.equals(sys.sunrise) : sys.sunrise != null) return false;
+        return sunset != null ? sunset.equals(sys.sunset) : sys.sunset == null;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(message).append(id).append(sunset).append(sunrise).append(type).append(country).toHashCode();
+        int result = type != null ? type.hashCode() : 0;
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (sunrise != null ? sunrise.hashCode() : 0);
+        result = 31 * result + (sunset != null ? sunset.hashCode() : 0);
+        return result;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Sys) == false) {
-            return false;
-        }
-        Sys rhs = ((Sys) other);
-        return new EqualsBuilder().append(message, rhs.message).append(id, rhs.id).append(sunset, rhs.sunset).append(sunrise, rhs.sunrise).append(type, rhs.type).append(country, rhs.country).isEquals();
+    public String toString() {
+        return "Sys{" +
+                "type=" + type +
+                ", id=" + id +
+                ", message=" + message +
+                ", country='" + country + '\'' +
+                ", sunrise=" + sunrise +
+                ", sunset=" + sunset +
+                '}';
     }
-
 }

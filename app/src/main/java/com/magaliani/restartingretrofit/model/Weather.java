@@ -1,11 +1,8 @@
 
-package com.example;
+package com.magaliani.restartingretrofit.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Weather {
 
@@ -21,6 +18,13 @@ public class Weather {
     @SerializedName("icon")
     @Expose
     private String icon;
+
+    public Weather(Long id, String main, String description, String icon) {
+        this.id = id;
+        this.main = main;
+        this.description = description;
+        this.icon = icon;
+    }
 
     public Long getId() {
         return id;
@@ -55,25 +59,35 @@ public class Weather {
     }
 
     @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("id", id).append("main", main).append("description", description).append("icon", icon).toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Weather weather = (Weather) o;
+
+        if (id != null ? !id.equals(weather.id) : weather.id != null) return false;
+        if (main != null ? !main.equals(weather.main) : weather.main != null) return false;
+        if (description != null ? !description.equals(weather.description) : weather.description != null)
+            return false;
+        return icon != null ? icon.equals(weather.icon) : weather.icon == null;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).append(icon).append(description).append(main).toHashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (main != null ? main.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (icon != null ? icon.hashCode() : 0);
+        return result;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Weather) == false) {
-            return false;
-        }
-        Weather rhs = ((Weather) other);
-        return new EqualsBuilder().append(id, rhs.id).append(icon, rhs.icon).append(description, rhs.description).append(main, rhs.main).isEquals();
+    public String toString() {
+        return "Weather{" +
+                "id=" + id +
+                ", main='" + main + '\'' +
+                ", description='" + description + '\'' +
+                ", icon='" + icon + '\'' +
+                '}';
     }
-
 }

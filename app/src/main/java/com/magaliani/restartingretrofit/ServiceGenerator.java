@@ -1,6 +1,9 @@
 package com.magaliani.restartingretrofit;
 
-import com.squareup.okhttp.OkHttpClient;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by magaliani on 13/02/18.
@@ -8,7 +11,7 @@ import com.squareup.okhttp.OkHttpClient;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/";
+    private static final String BASE_URL = "https://api.openweathermap.org";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()

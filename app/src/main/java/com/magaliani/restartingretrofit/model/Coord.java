@@ -1,11 +1,8 @@
 
-package com.example;
+package com.magaliani.restartingretrofit.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Coord {
 
@@ -15,6 +12,11 @@ public class Coord {
     @SerializedName("lat")
     @Expose
     private Double lat;
+
+    public Coord(Double lon, Double lat) {
+        this.lon = lon;
+        this.lat = lat;
+    }
 
     public Double getLon() {
         return lon;
@@ -33,25 +35,28 @@ public class Coord {
     }
 
     @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("lon", lon).append("lat", lat).toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Coord coord = (Coord) o;
+
+        if (lon != null ? !lon.equals(coord.lon) : coord.lon != null) return false;
+        return lat != null ? lat.equals(coord.lat) : coord.lat == null;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(lon).append(lat).toHashCode();
+        int result = lon != null ? lon.hashCode() : 0;
+        result = 31 * result + (lat != null ? lat.hashCode() : 0);
+        return result;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Coord) == false) {
-            return false;
-        }
-        Coord rhs = ((Coord) other);
-        return new EqualsBuilder().append(lon, rhs.lon).append(lat, rhs.lat).isEquals();
+    public String toString() {
+        return "Coord{" +
+                "lon=" + lon +
+                ", lat=" + lat +
+                '}';
     }
-
 }

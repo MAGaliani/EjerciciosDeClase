@@ -1,11 +1,8 @@
 
-package com.example;
+package com.magaliani.restartingretrofit.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Clouds {
 
@@ -22,25 +19,24 @@ public class Clouds {
     }
 
     @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("all", all).toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Clouds clouds = (Clouds) o;
+
+        return all != null ? all.equals(clouds.all) : clouds.all == null;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(all).toHashCode();
+        return all != null ? all.hashCode() : 0;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Clouds) == false) {
-            return false;
-        }
-        Clouds rhs = ((Clouds) other);
-        return new EqualsBuilder().append(all, rhs.all).isEquals();
+    public String toString() {
+        return "Clouds{" +
+                "all=" + all +
+                '}';
     }
-
 }
