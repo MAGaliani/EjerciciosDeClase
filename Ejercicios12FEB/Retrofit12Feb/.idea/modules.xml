@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Retrofit12Feb.iml" filepath="$PROJECT_DIR$/Retrofit12Feb.iml" />
+      <module fileurl="file://C:\Users\GaloMcTunki\Desktop\Trabajos de Clase\EjerciciosDeClase\Ejercicios12FEB\Retrofit12Feb\Retrofit12Feb.iml" filepath="C:\Users\GaloMcTunki\Desktop\Trabajos de Clase\EjerciciosDeClase\Ejercicios12FEB\Retrofit12Feb\Retrofit12Feb.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\GaloMcTunki\Desktop\Trabajos de Clase\EjerciciosDeClase\Ejercicios12FEB\Retrofit12Feb\app\app.iml" filepath="C:\Users\GaloMcTunki\Desktop\Trabajos de Clase\EjerciciosDeClase\Ejercicios12FEB\Retrofit12Feb\app\app.iml" />
     </modules>
   </component>
 </project>
