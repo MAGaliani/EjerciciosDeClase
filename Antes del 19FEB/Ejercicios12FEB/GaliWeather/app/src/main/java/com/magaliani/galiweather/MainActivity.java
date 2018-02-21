@@ -1,6 +1,7 @@
 package com.magaliani.galiweather;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     //TextView temp;
+
+
+    //FragmentManager manager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
