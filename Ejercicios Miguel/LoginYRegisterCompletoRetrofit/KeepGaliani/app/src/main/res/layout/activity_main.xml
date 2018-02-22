@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/degradados"
     tools:context="com.magaliani.keepgaliani.MainActivity">
 
     <android.support.design.widget.TextInputLayout
@@ -21,7 +22,8 @@
             android:id="@+id/inputcorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Correo" />
+            android:hint="Correo"
+            android:textColorHint="@color/white" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -52,7 +54,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/ic_notepad"
+        tools:ignore="VectorDrawableCompat" />
 
     <Button
         android:id="@+id/buttonDoLogin"

@@ -1,0 +1,4 @@
+#Tue Feb 20 08:36:05 CET 2018
+base.0=/home/magaliani/Documentos/WorkSpaceAndroidStudio/EjerciciosDeClase/EjercicioMiguel19FeB/PanZApp/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

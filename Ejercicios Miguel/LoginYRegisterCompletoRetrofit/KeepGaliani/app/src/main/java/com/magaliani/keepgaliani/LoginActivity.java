@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity{
                     public void onResponse(Call<ResponseAuth> call, Response<ResponseAuth> response) {
                         if(response.isSuccessful()){
                             responseAuth = response.body();
-                            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             Log.i("loggin", responseAuth.toString());
                             startActivity(intent);
                         }

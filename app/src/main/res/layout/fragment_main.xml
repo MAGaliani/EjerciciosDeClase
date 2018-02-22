@@ -7,57 +7,10 @@
     android:padding="16dp">
 
     <FrameLayout
+        android:id="@+id/weatherFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/weatherFragment">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="100dp"
-            android:layout_height="66dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="27dp"
-            android:fontFamily="@font/alfa_slab_one"
-            android:gravity="center"
-            android:text="% De humedad"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewTemp"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <TextView
-            android:id="@+id/TextViewViento"
-            android:layout_width="129dp"
-            android:layout_height="66dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="27dp"
-            android:fontFamily="@font/alfa_slab_one"
-            android:gravity="center"
-            android:text="Viento en KPH"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/imageViewWind"
-            app:layout_constraintTop_toBottomOf="@+id/textViewHumedad" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="100dp"
-            android:layout_height="66dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="26dp"
-            android:fontFamily="@font/alfa_slab_one"
-            android:gravity="center"
-            android:text="Km/Hora"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewTemp"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
     </FrameLayout>
 
     <TextView
@@ -156,7 +109,7 @@
         android:layout_width="129dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
         android:text="Humedad en %"
@@ -164,5 +117,53 @@
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imageViewHumidity"
         app:layout_constraintTop_toBottomOf="@+id/textViewTemp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="100dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:text="% De humedad"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintStart_toEndOf="@+id/textViewTemp"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/TextViewViento"
+        android:layout_width="129dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:text="Viento en KPH"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewWind"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHumedad" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="100dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="29dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:text="Km/Hora"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewTemp"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>

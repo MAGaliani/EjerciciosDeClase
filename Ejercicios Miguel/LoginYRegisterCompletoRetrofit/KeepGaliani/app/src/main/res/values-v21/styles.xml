@@ -4,9 +4,14 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Galo" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:statusBarColor">@color/upbar</item>
+        <item name="colorAccent">@color/white</item>
     </style>
 </resources>
