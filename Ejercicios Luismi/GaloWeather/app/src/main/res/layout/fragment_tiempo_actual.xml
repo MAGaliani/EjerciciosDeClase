@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewCity"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCity"
         app:srcCompat="@drawable/ic_sunny" />
 
@@ -21,34 +21,34 @@
         android:id="@+id/imageViewThermometer"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
-        app:srcCompat="@drawable/ic_thermometer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewSun" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSun"
+        app:srcCompat="@drawable/ic_thermometer" />
 
     <ImageView
         android:id="@+id/imageViewHumidity"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
-        app:srcCompat="@drawable/ic_humidity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewThermometer"
+        app:srcCompat="@drawable/ic_humidity" />
 
     <ImageView
         android:id="@+id/imageViewWind"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
-        app:srcCompat="@drawable/ic_wind"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewHumidity"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.046"
+        app:srcCompat="@drawable/ic_wind" />
 
     <TextView
         android:id="@+id/textViewTemp"
@@ -67,7 +67,7 @@
         android:id="@+id/textView3"
         android:layout_width="100dp"
         android:layout_height="66dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginStart="1dp"
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
@@ -97,7 +97,7 @@
         android:id="@+id/textView2"
         android:layout_width="100dp"
         android:layout_height="66dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/alfa_slab_one"
@@ -128,7 +128,7 @@
         android:id="@+id/textView"
         android:layout_width="100dp"
         android:layout_height="66dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="29dp"
         android:fontFamily="@font/alfa_slab_one"
@@ -144,9 +144,10 @@
     <TextView
         android:id="@+id/textViewCity"
         android:layout_width="367dp"
-        android:layout_height="88dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/alfa_slab_one"
         android:gravity="center"
         android:text="Ciudad"
@@ -154,8 +155,15 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/autoCompleteTextView" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AutoCompleteTextView"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>

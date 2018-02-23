@@ -1,5 +1,5 @@
 
-package com.magaliani.galoweather.model;
+package com.magaliani.galoweather.models.OpenWeather;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -69,7 +69,7 @@ public class WeatherInfo implements Serializable, Parcelable
 
     protected WeatherInfo(Parcel in) {
         this.coord = ((Coord) in.readValue((Coord.class.getClassLoader())));
-        in.readList(this.weather, (com.magaliani.galoweather.model.Weather.class.getClassLoader()));
+        in.readList(this.weather, (Weather.class.getClassLoader()));
         this.base = ((String) in.readValue((String.class.getClassLoader())));
         this.main = ((Main) in.readValue((Main.class.getClassLoader())));
         this.visibility = ((long) in.readValue((long.class.getClassLoader())));

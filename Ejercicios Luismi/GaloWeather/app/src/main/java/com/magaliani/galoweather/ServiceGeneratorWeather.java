@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by GaloMcTunki on 18/02/2018.
  */
 
-public class ServiceGenerator {
+public class ServiceGeneratorWeather {
 
     private static final String BASE_URL = "https://api.openweathermap.org";
 

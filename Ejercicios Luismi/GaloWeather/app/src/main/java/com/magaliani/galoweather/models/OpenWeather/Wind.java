@@ -1,5 +1,5 @@
 
-package com.magaliani.galoweather.model;
+package com.magaliani.galoweather.models.OpenWeather;
 
 import android.os.Parcel;
 import android.os.Parcelable;

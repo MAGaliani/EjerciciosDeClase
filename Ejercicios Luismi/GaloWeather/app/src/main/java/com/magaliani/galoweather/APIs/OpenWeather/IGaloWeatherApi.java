@@ -1,6 +1,6 @@
-package com.magaliani.galoweather;
+package com.magaliani.galoweather.APIs.OpenWeather;
 
-import com.magaliani.galoweather.model.WeatherInfo;
+import com.magaliani.galoweather.models.OpenWeather.WeatherInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
