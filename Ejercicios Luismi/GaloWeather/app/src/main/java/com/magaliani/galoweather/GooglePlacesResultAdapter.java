@@ -25,12 +25,15 @@ import retrofit2.Response;
  */
 
 public class GooglePlacesResultAdapter extends BaseAdapter implements Filterable{
+
     private Context mContext;
     private List<Prediction> resultList = new ArrayList<Prediction>();
 
-    public GooglePlacesResultAdapter(Context _context){
+
+    public GooglePlacesResultAdapter(Context _context) {
         this.mContext = _context;
     }
+
 
     @Override
     public int getCount() {
@@ -38,31 +41,38 @@ public class GooglePlacesResultAdapter extends BaseAdapter implements Filterable
     }
 
     @Override
-    public Prediction getItem(int position) {
-        return resultList.get(position);
+    public Prediction getItem(int i) {
+        return resultList.get(i);
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return i;
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
-        if (view == null){
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        //android.R.layout.simple_dropdown_item_1line
+        //return null;
+        if (view == null) {
+            //Inflamos el Layout
             LayoutInflater inflater =
                     (LayoutInflater) mContext
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             view = inflater.inflate(android.R.layout.simple_dropdown_item_1line, viewGroup, false);
 
         }
 
+        //Obtenemos la referencia al Textview
         TextView text = view.findViewById(android.R.id.text1);
-        Prediction p = getItem(position);
+        //Obtenemos el elemento i-ésimo
+        Prediction p = getItem(i);
+        //Setteamos el texto
         text.setText(p.getDescription());
 
         return view;
+
     }
 
     @Override
@@ -70,13 +80,18 @@ public class GooglePlacesResultAdapter extends BaseAdapter implements Filterable
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
+                //return null;
                 FilterResults filterResults = new FilterResults();
-                if (charSequence != null){
+                if (charSequence != null) {
+                    //Realizamos la búsqueda
                     List<Prediction> resultados = findCities(charSequence);
-                    if (resultados != null){
+                    //Si tenemos resultados, los añadimos
+                    if (resultados != null) {
                         filterResults.values = resultados;
-                        filterResults.values = resultados.size();
+                        filterResults.count = resultados.size();
                     }
+                    //Si no, devolvemos un conjunto vacío de resultados
+
                 }
                 return filterResults;
             }
@@ -92,6 +107,7 @@ public class GooglePlacesResultAdapter extends BaseAdapter implements Filterable
             }
         };
     }
+
 
     private List<Prediction> findCities(CharSequence text) {
         List<Prediction> result = null;
@@ -120,4 +136,5 @@ public class GooglePlacesResultAdapter extends BaseAdapter implements Filterable
 
         return result;
     }
+
 }

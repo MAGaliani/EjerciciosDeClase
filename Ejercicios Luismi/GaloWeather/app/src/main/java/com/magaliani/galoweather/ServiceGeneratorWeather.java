@@ -45,7 +45,7 @@ public class ServiceGeneratorWeather {
 
                     HttpUrl url = originalHttpUrl.newBuilder()
                             .addQueryParameter("APPID", "49a384a32e901a09cb9bbec19ee13499")
-                            .addQueryParameter("units","numeric")
+                            .addQueryParameter("units","metric")
                             .addQueryParameter("Lang", "es")
                             .build();
 

@@ -15,4 +15,15 @@ public interface IGaloWeatherApi {
     @GET("/data/2.5/weather")
     Call<WeatherInfo> getWeatherByCity(@Query("q")String city);
 
+    @GET("/data/2.5/weather")
+    Call<WeatherInfo> getWeatherInfoByCoords(@Query("lat") Double lat, @Query("lon") Double lon);
+
+
+/*
+    @GET("/data/2.5/forecast")
+    Call<ForecastInfo> getForecastInfoByCity(@Query("q") String city);
+
+    @GET("/data/2.5/forecast")
+    Call<ForecastInfo> getForecastInfoByCoords(@Query("lat") Double lat, @Query("lon") Double lon);*/
+
 }
