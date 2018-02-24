@@ -119,7 +119,7 @@ public class TiempoActualFragment extends Fragment {
                                 }
                             }
                             else{
-                                
+                                imageFond.setImageResource(R.drawable.background_degree);
                             }
 
                             IGaloWeatherApi iGaloWeatherApi = ServiceGeneratorWeather.createService(IGaloWeatherApi.class);
@@ -151,19 +151,19 @@ public class TiempoActualFragment extends Fragment {
                                         else if (descriptionTime.equalsIgnoreCase("scattered clouds")){
                                             imageViewWeather.setImageResource(R.drawable.ic_scattered_clouds);
                                         }
-                                        else if (descriptionTime.equalsIgnoreCase("broken clouds")){
+                                        else if (descriptionTime.equalsIgnoreCase("broken clouds") || descriptionTime.contains("overcast")){
                                             imageViewWeather.setImageResource(R.drawable.ic_broken_clouds);
                                         }
-                                        else if (descriptionTime.equalsIgnoreCase("shower rain")){
+                                        else if (descriptionTime.equalsIgnoreCase("shower rain") || descriptionTime.contains("drizzle")){
                                             imageViewWeather.setImageResource(R.drawable.ic_shower_rain);
                                         }
                                         else if (descriptionTime.equalsIgnoreCase("rain")){
                                             imageViewWeather.setImageResource(R.drawable.ic_rain);
                                         }
-                                        else if (descriptionTime.equalsIgnoreCase("thunderstorm")){
+                                        else if (descriptionTime.equalsIgnoreCase("thunderstorm") || descriptionTime.contains("thunder")){
                                             imageViewWeather.setImageResource(R.drawable.ic_thunderstorm);
                                         }
-                                        else if (descriptionTime.equalsIgnoreCase("snow")){
+                                        else if (descriptionTime.equalsIgnoreCase("snow") || descriptionTime.contains("snow")){
                                             imageViewWeather.setImageResource(R.drawable.ic_snow);
                                         }
 
