@@ -26,10 +26,10 @@ public class Sys implements Serializable, Parcelable
     private String country;
     @SerializedName("sunrise")
     @Expose
-    private long sunrise;
+    private double sunrise;
     @SerializedName("sunset")
     @Expose
-    private long sunset;
+    private double sunset;
     public final static Creator<Sys> CREATOR = new Creator<Sys>() {
 
 
@@ -101,7 +101,7 @@ public class Sys implements Serializable, Parcelable
         this.country = country;
     }
 
-    public long getSunrise() {
+    public double getSunrise() {
         return sunrise;
     }
 
@@ -109,7 +109,7 @@ public class Sys implements Serializable, Parcelable
         this.sunrise = sunrise;
     }
 
-    public long getSunset() {
+    public double getSunset() {
         return sunset;
     }
 
@@ -135,8 +135,8 @@ public class Sys implements Serializable, Parcelable
         if (type != sys.type) return false;
         if (id != sys.id) return false;
         if (Double.compare(sys.message, message) != 0) return false;
-        if (sunrise != sys.sunrise) return false;
-        if (sunset != sys.sunset) return false;
+        if (Double.compare(sys.sunrise, sunrise) != 0) return false;
+        if (Double.compare(sys.sunset, sunset) != 0) return false;
         return country != null ? country.equals(sys.country) : sys.country == null;
     }
 
@@ -149,8 +149,10 @@ public class Sys implements Serializable, Parcelable
         temp = Double.doubleToLongBits(message);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (int) (sunrise ^ (sunrise >>> 32));
-        result = 31 * result + (int) (sunset ^ (sunset >>> 32));
+        temp = Double.doubleToLongBits(sunrise);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(sunset);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 

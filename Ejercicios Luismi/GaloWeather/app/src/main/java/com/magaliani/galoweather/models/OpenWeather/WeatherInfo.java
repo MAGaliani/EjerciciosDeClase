@@ -27,7 +27,7 @@ public class WeatherInfo implements Serializable, Parcelable
     private Main main;
     @SerializedName("visibility")
     @Expose
-    private long visibility;
+    private double visibility;
     @SerializedName("wind")
     @Expose
     private Wind wind;
@@ -36,7 +36,7 @@ public class WeatherInfo implements Serializable, Parcelable
     private Clouds clouds;
     @SerializedName("dt")
     @Expose
-    private long dt;
+    private double dt;
     @SerializedName("sys")
     @Expose
     private Sys sys;
@@ -48,7 +48,7 @@ public class WeatherInfo implements Serializable, Parcelable
     private String name;
     @SerializedName("cod")
     @Expose
-    private long cod;
+    private double cod;
     public final static Creator<WeatherInfo> CREATOR = new Creator<WeatherInfo>() {
 
 
@@ -132,7 +132,7 @@ public class WeatherInfo implements Serializable, Parcelable
         this.main = main;
     }
 
-    public long getVisibility() {
+    public double getVisibility() {
         return visibility;
     }
 
@@ -156,7 +156,7 @@ public class WeatherInfo implements Serializable, Parcelable
         this.clouds = clouds;
     }
 
-    public long getDt() {
+    public double getDt() {
         return dt;
     }
 
@@ -188,13 +188,14 @@ public class WeatherInfo implements Serializable, Parcelable
         this.name = name;
     }
 
-    public long getCod() {
+    public double getCod() {
         return cod;
     }
 
     public void setCod(long cod) {
         this.cod = cod;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -203,10 +204,10 @@ public class WeatherInfo implements Serializable, Parcelable
 
         WeatherInfo that = (WeatherInfo) o;
 
-        if (visibility != that.visibility) return false;
-        if (dt != that.dt) return false;
+        if (Double.compare(that.visibility, visibility) != 0) return false;
+        if (Double.compare(that.dt, dt) != 0) return false;
         if (id != that.id) return false;
-        if (cod != that.cod) return false;
+        if (Double.compare(that.cod, cod) != 0) return false;
         if (coord != null ? !coord.equals(that.coord) : that.coord != null) return false;
         if (weather != null ? !weather.equals(that.weather) : that.weather != null) return false;
         if (base != null ? !base.equals(that.base) : that.base != null) return false;
@@ -219,18 +220,23 @@ public class WeatherInfo implements Serializable, Parcelable
 
     @Override
     public int hashCode() {
-        int result = coord != null ? coord.hashCode() : 0;
+        int result;
+        long temp;
+        result = coord != null ? coord.hashCode() : 0;
         result = 31 * result + (weather != null ? weather.hashCode() : 0);
         result = 31 * result + (base != null ? base.hashCode() : 0);
         result = 31 * result + (main != null ? main.hashCode() : 0);
-        result = 31 * result + (int) (visibility ^ (visibility >>> 32));
+        temp = Double.doubleToLongBits(visibility);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (wind != null ? wind.hashCode() : 0);
         result = 31 * result + (clouds != null ? clouds.hashCode() : 0);
-        result = 31 * result + (int) (dt ^ (dt >>> 32));
+        temp = Double.doubleToLongBits(dt);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (sys != null ? sys.hashCode() : 0);
         result = 31 * result + (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (int) (cod ^ (cod >>> 32));
+        temp = Double.doubleToLongBits(cod);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 

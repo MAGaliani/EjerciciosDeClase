@@ -16,6 +16,7 @@ import com.magaliani.galoweather.APIs.GooglePlaces.GooglePlacesApi;
 import com.magaliani.galoweather.APIs.OpenWeather.IGaloWeatherApi;
 import com.magaliani.galoweather.models.GooglePlaces.details.DetailsResult;
 import com.magaliani.galoweather.models.GooglePlaces.prediction.Prediction;
+import com.magaliani.galoweather.models.OpenWeather.Weather;
 import com.magaliani.galoweather.models.OpenWeather.WeatherInfo;
 import com.squareup.picasso.Picasso;
 
@@ -35,16 +36,19 @@ public class TiempoActualFragment extends Fragment {
     private String mTemperatura;
     private String mHumedad;
     private String mViento;
+    private String descriptionTime;
 
     // TODO: Rename and change types of parameters
 
     AutoCompleteTextView autoCompleteTextView;
-    ImageView imageFond;
+    ImageView imageFond, imageViewWeather;
 
-    private WeatherInfo pojoWeatherInfo;
-    private TextView textCiudad, textHumedad, textViento, textTemperatura, TextHumedad;
-    private ImageView imageFondo;
+    GooglePlacesApi googlePlacesApi;
+    Prediction pred;
 
+    private WeatherInfo pojoWeatherInfo, oiyo;
+    private Weather pojoWeather;
+    private TextView textCiudad, textHumedad, textViento, textTemperatura;
 
     private IGaloWeatherApi mListenerWeather;
 
@@ -87,6 +91,7 @@ public class TiempoActualFragment extends Fragment {
         textHumedad = view.findViewById(R.id.textViewHumedad);
         textViento = view.findViewById(R.id.TextViewViento);
         imageFond = view.findViewById(R.id.ImageViewfondo);
+        imageViewWeather = view.findViewById(R.id.imageViewWeather);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -109,8 +114,12 @@ public class TiempoActualFragment extends Fragment {
                                             .with(getContext())
                                             .load(photo_url)
                                             .fit()
+                                            .centerCrop()
                                             .into(imageFond);
                                 }
+                            }
+                            else{
+                                
                             }
 
                             IGaloWeatherApi iGaloWeatherApi = ServiceGeneratorWeather.createService(IGaloWeatherApi.class);
@@ -125,6 +134,47 @@ public class TiempoActualFragment extends Fragment {
                                 public void onResponse(Call<WeatherInfo> call, Response<WeatherInfo> response) {
                                     if (response.isSuccessful()){
                                         pojoWeatherInfo = response.body();
+
+                                        descriptionTime = pojoWeatherInfo.getWeather().get(0).getDescription().toString();
+
+                                        Log.d("El valor es:", descriptionTime);
+
+                                        if (descriptionTime.equalsIgnoreCase("clear sky")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_clear_sky);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("mist")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_mist);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("few clouds")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_few_clouds);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("scattered clouds")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_scattered_clouds);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("broken clouds")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_broken_clouds);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("shower rain")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_shower_rain);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("rain")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_rain);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("thunderstorm")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_thunderstorm);
+                                        }
+                                        else if (descriptionTime.equalsIgnoreCase("snow")){
+                                            imageViewWeather.setImageResource(R.drawable.ic_snow);
+                                        }
+
+                                        else{
+                                            Picasso.with(getContext()).load("http://openweathermap.org/img/w/" + pojoWeatherInfo.getWeather().get(0).getIcon() + ".png").into(imageViewWeather);
+
+                                        }
+
+                                        Log.d("El valor es", descriptionTime);
+
+
                                         textCiudad.setText(pojoWeatherInfo.getName());
                                         textTemperatura.setText(Math.round(pojoWeatherInfo.getMain().getTemp()) + "");
                                         textHumedad.setText(Math.round(pojoWeatherInfo.getMain().getHumidity()) + "");

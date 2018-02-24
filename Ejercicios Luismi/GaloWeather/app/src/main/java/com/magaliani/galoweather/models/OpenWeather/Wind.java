@@ -17,7 +17,7 @@ public class Wind implements Serializable, Parcelable
     private double speed;
     @SerializedName("deg")
     @Expose
-    private long deg;
+    private double deg;
     public final static Creator<Wind> CREATOR = new Creator<Wind>() {
 
 
@@ -57,7 +57,7 @@ public class Wind implements Serializable, Parcelable
         this.speed = speed;
     }
 
-    public long getDeg() {
+    public double getDeg() {
         return deg;
     }
 
@@ -81,7 +81,7 @@ public class Wind implements Serializable, Parcelable
         Wind wind = (Wind) o;
 
         if (Double.compare(wind.speed, speed) != 0) return false;
-        return deg == wind.deg;
+        return Double.compare(wind.deg, deg) == 0;
     }
 
     @Override
@@ -90,7 +90,8 @@ public class Wind implements Serializable, Parcelable
         long temp;
         temp = Double.doubleToLongBits(speed);
         result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (int) (deg ^ (deg >>> 32));
+        temp = Double.doubleToLongBits(deg);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 

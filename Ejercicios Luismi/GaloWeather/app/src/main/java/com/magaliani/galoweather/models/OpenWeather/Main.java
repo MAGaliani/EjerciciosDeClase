@@ -17,10 +17,10 @@ public class Main implements Serializable, Parcelable
     private double temp;
     @SerializedName("pressure")
     @Expose
-    private long pressure;
+    private double pressure;
     @SerializedName("humidity")
     @Expose
-    private long humidity;
+    private double humidity;
     @SerializedName("temp_min")
     @Expose
     private double tempMin;
@@ -72,7 +72,7 @@ public class Main implements Serializable, Parcelable
         this.temp = temp;
     }
 
-    public long getPressure() {
+    public double getPressure() {
         return pressure;
     }
 
@@ -80,7 +80,7 @@ public class Main implements Serializable, Parcelable
         this.pressure = pressure;
     }
 
-    public long getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
@@ -112,8 +112,8 @@ public class Main implements Serializable, Parcelable
         Main main = (Main) o;
 
         if (Double.compare(main.temp, temp) != 0) return false;
-        if (pressure != main.pressure) return false;
-        if (humidity != main.humidity) return false;
+        if (Double.compare(main.pressure, pressure) != 0) return false;
+        if (Double.compare(main.humidity, humidity) != 0) return false;
         if (Double.compare(main.tempMin, tempMin) != 0) return false;
         return Double.compare(main.tempMax, tempMax) == 0;
     }
@@ -124,8 +124,10 @@ public class Main implements Serializable, Parcelable
         long temp1;
         temp1 = Double.doubleToLongBits(temp);
         result = (int) (temp1 ^ (temp1 >>> 32));
-        result = 31 * result + (int) (pressure ^ (pressure >>> 32));
-        result = 31 * result + (int) (humidity ^ (humidity >>> 32));
+        temp1 = Double.doubleToLongBits(pressure);
+        result = 31 * result + (int) (temp1 ^ (temp1 >>> 32));
+        temp1 = Double.doubleToLongBits(humidity);
+        result = 31 * result + (int) (temp1 ^ (temp1 >>> 32));
         temp1 = Double.doubleToLongBits(tempMin);
         result = 31 * result + (int) (temp1 ^ (temp1 >>> 32));
         temp1 = Double.doubleToLongBits(tempMax);
