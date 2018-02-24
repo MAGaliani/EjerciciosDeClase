@@ -46,9 +46,8 @@ public class TiempoActualFragment extends Fragment {
     GooglePlacesApi googlePlacesApi;
     Prediction pred;
 
-    private WeatherInfo pojoWeatherInfo, oiyo;
-    private Weather pojoWeather;
-    private TextView textCiudad, textHumedad, textViento, textTemperatura;
+    private WeatherInfo pojoWeatherInfo;
+    private TextView textCiudad, textHumedad, textViento, textTemperatura, textTemperaturaMax, textTemperaturaMin;
 
     private IGaloWeatherApi mListenerWeather;
 
@@ -90,6 +89,9 @@ public class TiempoActualFragment extends Fragment {
         textTemperatura = view.findViewById(R.id.textViewTemp);
         textHumedad = view.findViewById(R.id.textViewHumedad);
         textViento = view.findViewById(R.id.TextViewViento);
+        textTemperaturaMax = view.findViewById(R.id.textViewTempMax);
+        textTemperaturaMin = view.findViewById(R.id.textViewTempMin);
+
         imageFond = view.findViewById(R.id.ImageViewfondo);
         imageViewWeather = view.findViewById(R.id.imageViewWeather);
 
@@ -109,7 +111,7 @@ public class TiempoActualFragment extends Fragment {
 
                             if (result.getResult().getPhotos() != null) {
                                 if (!result.getResult().getPhotos().isEmpty()) {
-                                    String photo_url = String.format("https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&key=AIzaSyD_FMG1EnTUm3Ja7bSnlCV2VINLFq7rLMw&photoreference=%s", result.getResult().getPhotos().get(0).getPhoto_reference());
+                                    String photo_url = String.format("https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&key=AIzaSyBqakMg1MGjKNmjT74_5BDdOA86RTMPEjY&photoreference=%s", result.getResult().getPhotos().get(0).getPhoto_reference());
                                     Picasso
                                             .with(getContext())
                                             .load(photo_url)
@@ -117,9 +119,6 @@ public class TiempoActualFragment extends Fragment {
                                             .centerCrop()
                                             .into(imageFond);
                                 }
-                            }
-                            else{
-                                imageFond.setImageResource(R.drawable.background_degree);
                             }
 
                             IGaloWeatherApi iGaloWeatherApi = ServiceGeneratorWeather.createService(IGaloWeatherApi.class);
@@ -169,16 +168,16 @@ public class TiempoActualFragment extends Fragment {
 
                                         else{
                                             Picasso.with(getContext()).load("http://openweathermap.org/img/w/" + pojoWeatherInfo.getWeather().get(0).getIcon() + ".png").into(imageViewWeather);
-
                                         }
 
                                         Log.d("El valor es", descriptionTime);
-
 
                                         textCiudad.setText(pojoWeatherInfo.getName());
                                         textTemperatura.setText(Math.round(pojoWeatherInfo.getMain().getTemp()) + "");
                                         textHumedad.setText(Math.round(pojoWeatherInfo.getMain().getHumidity()) + "");
                                         textViento.setText(Math.round(pojoWeatherInfo.getWind().getSpeed()) + "");
+                                        textTemperaturaMax.setText(Math.round(pojoWeatherInfo.getMain().getTempMax()) + "");
+                                        textTemperaturaMin.setText(Math.round(pojoWeatherInfo.getMain().getTempMin()) + "");
                                         Log.i("RetrOK", pojoWeatherInfo.toString());
                                     }
                                 }

@@ -45,7 +45,7 @@ public class ServiceGeneratorGooglePlaces {
 
                     HttpUrl url = originalHttpUrl.newBuilder()
                             //.addEncodedPathSegments("maps/api/place")
-                            .addQueryParameter("key", "AIzaSyD_FMG1EnTUm3Ja7bSnlCV2VINLFq7rLMw")
+                            .addQueryParameter("key", "AIzaSyBqakMg1MGjKNmjT74_5BDdOA86RTMPEjY")
                             //.addQueryParameter("language", "es")
                             //.addQueryParameter("type", "(cities)")
                             .build();
