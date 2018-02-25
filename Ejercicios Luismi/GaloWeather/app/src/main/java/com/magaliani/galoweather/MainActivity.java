@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity{
                             .commit();
                     return true;
                 case R.id.navigation_forecast:
-                   /* manager.beginTransaction()
-                            .replace(R.id.)
-                    mTextMessage.setText(R.string.title_notifications);*/
+                   manager.beginTransaction()
+                           .replace(R.id.frame_layout, new ForecastInfoFragment())
+                           .commit();
                     return true;
             }
             return false;

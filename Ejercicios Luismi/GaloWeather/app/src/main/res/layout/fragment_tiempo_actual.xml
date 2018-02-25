@@ -222,7 +222,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textViewTempMax"
+        android:id="@+id/textViewTempMaxFor"
         android:layout_width="45dp"
         android:layout_height="60dp"
         android:layout_marginStart="4dp"
@@ -248,8 +248,8 @@
         android:textColor="@android:color/black"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textViewTempMax"
-        app:layout_constraintTop_toTopOf="@+id/textViewTempMax" />
+        app:layout_constraintStart_toEndOf="@+id/textViewTempMaxFor"
+        app:layout_constraintTop_toTopOf="@+id/textViewTempMaxFor" />
 
     <TextView
         android:id="@+id/textViewTempMin"

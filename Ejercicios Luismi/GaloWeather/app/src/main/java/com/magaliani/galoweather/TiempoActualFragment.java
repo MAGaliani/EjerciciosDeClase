@@ -1,6 +1,5 @@
 package com.magaliani.galoweather;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,7 +15,6 @@ import com.magaliani.galoweather.APIs.GooglePlaces.GooglePlacesApi;
 import com.magaliani.galoweather.APIs.OpenWeather.IGaloWeatherApi;
 import com.magaliani.galoweather.models.GooglePlaces.details.DetailsResult;
 import com.magaliani.galoweather.models.GooglePlaces.prediction.Prediction;
-import com.magaliani.galoweather.models.OpenWeather.Weather;
 import com.magaliani.galoweather.models.OpenWeather.WeatherInfo;
 import com.squareup.picasso.Picasso;
 
@@ -89,7 +87,7 @@ public class TiempoActualFragment extends Fragment {
         textTemperatura = view.findViewById(R.id.textViewTemp);
         textHumedad = view.findViewById(R.id.textViewHumedad);
         textViento = view.findViewById(R.id.TextViewViento);
-        textTemperaturaMax = view.findViewById(R.id.textViewTempMax);
+        textTemperaturaMax = view.findViewById(R.id.textViewTempMaxFor);
         textTemperaturaMin = view.findViewById(R.id.textViewTempMin);
 
         imageFond = view.findViewById(R.id.ImageViewfondo);
